@@ -1,0 +1,32 @@
+{
+  "resume_rules": [
+    "Mandate Google XYZ formula: 'Accomplished [X], as measured by [Y], by doing [Z]'.",
+    "Reject generic tutorials like MNIST or basic Titanic; project must solve an engineering problem.",
+    "Hardware and latency metrics must be explicit: state GPU/CPU type, VRAM usage, inference latency, and quantization formats.",
+    "Verify clean production engineering: mention Docker, FastAPI endpoints, CI/CD, and database indexing.",
+    "Keep length strictly to 1 page for junior roles; anything longer signals lack of conciseness."
+  ],
+  "linkedin_rules": [
+    "Stop posting course certificates; post technical teardowns of actual optimizations made.",
+    "Headline must describe what you build (e.g., 'AI Systems Engineer | Speech & Local Multimodal Pipelines').",
+    "Include GitHub repository links and short demos with code snippets in technical posts."
+  ],
+  "github_rules": [
+    "README must have an architectural diagram (Mermaid.js) showing data flow.",
+    "Must include an empirical benchmark table (audio length vs. processing time, VRAM consumption).",
+    "Must provide a 1-command setup (e.g., run.bat, docker-compose.yml, or Makefile)."
+  ],
+  "cold_email_rules": [
+    "Keep total email length under 80 words.",
+    "Lead with a specific observation about their company tech stack or public repository.",
+    "Provide a direct link to a live demo or GitHub repository with zero signup friction.",
+    "Include a low-friction call-to-action (e.g., 'Open to a 2-minute architectural feedback chat?')."
+  ],
+  "interview_questions": [
+    {
+      "domain": "Hardware & CUDA Optimization",
+      "question": "You have an NVIDIA RTX 3050 with 4GB VRAM. You need to run both an audio transcription model and an LLM on the same machine. How do you budget VRAM, select quantization formats, and prevent CUDA Out Of Memory (OOM) errors?",
+      "architect_key_points": "Use faster-whisper small or base model with float16 or int8_float16 (~1.1 GB VRAM). For the LLM, use a 4-bit quantized model (e.g., llama3.2:3b via Ollama) consuming ~2.0-2.2 GB. Total VRAM remains ~3.3 GB, leaving 700 MB headroom for Windows DWM and context caches. If VRAM exceeds limits, offload Whisper to CPU via INT8 and keep the LLM on GPU."
+    }
+  ]
+}
